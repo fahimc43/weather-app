@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import tw from "twin.macro";
+import bg from "../../../src/images/weatherBg.png";
 
 interface InitCountry {
   capital: string[];
@@ -62,8 +63,8 @@ const CountryInfo: React.FC = () => {
   };
 
   return (
-    <Container>
-      <h1>Country Info</h1>
+    <Container style={{ backgroundImage: `url(${bg})` }}>
+      <h1 className=" text-xl font-semibold my-7 uppercase">Country Info</h1>
       {loading ? (
         <p>Loading...</p>
       ) : country ? (
@@ -94,7 +95,7 @@ const CountryInfo: React.FC = () => {
       ) : (
         weatherInfo && (
           <WeatherInfo>
-            <h3>{country?.capital[0]} Weather Info</h3>
+            <h3 className=" text-lg">{country?.capital[0]} Weather Info</h3>
             <WeatherContent>
               <WeatherIcons src={weatherInfo.weather_icons[0]} />
               <p>
@@ -115,10 +116,10 @@ export default CountryInfo;
 
 const Container = styled.div`
   ${tw`
-    mx-52
+    h-screen
+    bg-contain 
     flex
     flex-col
-    justify-center
     items-center
   `}
 `;
@@ -128,13 +129,11 @@ const CountryContent = styled.div`
     flex
     justify-between
     border
-    border-gray-200
-    // drop-shadow-lg
     w-1/2
     m-2
-    py-2
+    py-6
     rounded-md
-    bg-gray-400
+    bg-indigo-50
   `}
 `;
 
@@ -177,12 +176,16 @@ const Button = styled.div`
 
 const WeatherInfo = styled.div`
   ${tw`
-    
+    mt-6
   `}
 `;
 
 const WeatherContent = styled.div`
   ${tw`
+    flex
+    flex-col
+    items-center
+    justify-center
     
   `}
 `;

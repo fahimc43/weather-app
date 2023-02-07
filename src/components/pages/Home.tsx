@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import tw from "twin.macro";
+import bg from "../../../src/images/weatherBg.png";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
     //  navigate(`/country/${countryName}`);
   };
   return (
-    <Container>
+    <Container style={{ backgroundImage: `url(${bg})` }}>
       <Title>Welcome To Weather Application</Title>
       <InputBox>
         <Input
@@ -34,14 +35,18 @@ export default Home;
 
 const Container = styled.div`
   ${tw`
-
+  h-screen
+  bg-contain
     `}
 `;
 
 const Title = styled.div`
   ${tw`
         bg-green-200
-
+        p-6
+        text-xl
+        font-bold
+        uppercase
     `}
 `;
 
@@ -49,6 +54,7 @@ const Input = styled.input`
   ${tw`
         h-10
         bg-gray-200
+        w-64
         my-2
         rounded-sm
         p-2
@@ -63,6 +69,7 @@ const InputBox = styled.div`
         flex
         flex-col
         items-center
+        mt-10
 
     `}
 `;
